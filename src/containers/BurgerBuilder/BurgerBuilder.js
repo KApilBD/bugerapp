@@ -1,13 +1,14 @@
-import React,{Component} from 'react';
-import Auxx from '../../hoc/Auxx'
+import React,{Component, Fragment} from 'react';
+//import Auxx from '../../hoc/Auxx'
+import Burger from '../../components/Burger/Burger';
 
 class BurgerBuilder extends Component{
     render(){
         return (
-            <Auxx>
-                <div>Burger</div>
+            <Fragment>
+                <Burger/>
                 <div>Burger Controls</div>
-            </Auxx>
+            </Fragment>
         );
 
     }
