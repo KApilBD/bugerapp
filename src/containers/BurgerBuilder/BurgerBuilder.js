@@ -6,7 +6,7 @@ class BurgerBuilder extends Component{
     render(){
         return (
             <Fragment>
-                <Burger/>
+                 <Burger/>
                 <div>Burger Controls</div>
             </Fragment>
         );
