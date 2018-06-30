@@ -90,28 +90,39 @@ class BurgerBuilder extends Component{
     
     purchaseContinueHandler = ()=>{
         // alert("You Continue!!!")
-        this.setState({loading: true})
-        const order ={
-            ingredients: this.state.ingredients,
-            price: this.state.totalPrice,
-            customer:{
-                name: 'Kapil Baraskar',
-                adress:{
-                    city: 'Banglore',
-                    zipCode: '560066',
-                    country: 'India',                
-                },
-            email: 'Kapil@burgerapp.com'
-            },
-            deliveryMethod: 'fastest',
+        // this.setState({loading: true})
+        // const order ={
+        //     ingredients: this.state.ingredients,
+        //     price: this.state.totalPrice,
+        //     customer:{
+        //         name: 'Kapil Baraskar',
+        //         adress:{
+        //             city: 'Banglore',
+        //             zipCode: '560066',
+        //             country: 'India',                
+        //         },
+        //     email: 'Kapil@burgerapp.com'
+        //     },
+        //     deliveryMethod: 'fastest',
+        // }
+        // axios.post('/orders.json', order)
+        // .then((res)=>{
+        //     this.setState({loading:false, purchasing: false})
+        // })
+        // .catch((err)=>{
+        //     this.setState({loading:false, purchasing: false})
+        // });
+    
+        const queryParam = [];
+        for (let i in this.state.ingredients){
+            queryParam.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]));  
         }
-        axios.post('/orders.json', order)
-        .then((res)=>{
-            this.setState({loading:false, purchasing: false})
-        })
-        .catch((err)=>{
-            this.setState({loading:false, purchasing: false})
-        });
+        
+        const queryString = queryParam.join('&');
+
+        this.props.history.push({
+            pathname: '/checkout',
+            search: '?' +queryString});
     }
 
     render(){
